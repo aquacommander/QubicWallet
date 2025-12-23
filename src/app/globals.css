@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+  --background: #e9f0f4;
+  --foreground: #0f172a;
+  --accent: #38bdf8;
+  --accent-2: #22c55e;
+  --card: rgba(255, 255, 255, 0.82);
+  --card-strong: rgba(255, 255, 255, 0.92);
+  --glow: rgba(56, 189, 248, 0.28);
+  --highlight: #8b5cf6;
+  }
+
+  @theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "Roboto Mono", monospace;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(56, 189, 248, 0.18), transparent 32%),
+    radial-gradient(circle at 88% 16%, rgba(34, 197, 94, 0.14), transparent 34%),
+    radial-gradient(circle at 36% 78%, rgba(139, 92, 246, 0.12), transparent 36%),
+    linear-gradient(145deg, #f5f8fb 0%, #e9f0f4 55%, #e0e9ef 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px;
+  opacity: 0.16;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 65% 40%, rgba(56, 189, 248, 0.18), transparent 45%);
+  filter: blur(90px);
+  z-index: 0;
+}
+
+/* Hide any leftover Next.js dev indicator / build watcher badges */
+#nextjs-build-watcher,
+.nextjs-build-watcher,
+#__next-prerender-indicator,
+.__next-prerender-indicator,
+#__next-build-indicator,
+.__next-build-indicator {
+  display: none !important;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: var(--foreground);
+}
+
+.glass-panel {
+  background: var(--card);
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 12px 48px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 64px rgba(15, 23, 42, 0.18);
+}
+
+.glow-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -160%;
+  background: conic-gradient(from 45deg, transparent 20%, var(--glow), transparent 60%);
+  animation: spin 24s linear infinite;
+  opacity: 0.35;
+}
+
+.glow-border::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.86));
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(12px);
+  z-index: 1;
+}
+
+.floating-aurora {
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(90% 90% at 25% 25%, rgba(249, 115, 22, 0.22), transparent 45%),
+    radial-gradient(120% 120% at 80% 20%, rgba(14, 165, 233, 0.18), transparent 46%),
+    radial-gradient(120% 120% at 60% 75%, rgba(34, 197, 94, 0.18), transparent 52%);
+  filter: blur(58px);
+  opacity: 0.65;
+  animation: float 26s ease-in-out infinite;
+}
+
+.particle-haze {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 42%);
+  mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.85), transparent 60%);
+  filter: blur(18px);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6px, -8px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
