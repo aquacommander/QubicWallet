@@ -45,7 +45,7 @@ const getMetadata = (): SignClientTypes.Metadata => ({
 
 const FALLBACK_PROJECT_ID =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID?.trim() ||
-  "716bbff14563cc8b748b56d7efb0a362";
+  "f7f8e7e15061afce26c54836381a9eaa";
 
 const clientCache = new Map<string, Promise<SignClient>>();
 
