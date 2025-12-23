@@ -1,10 +1,6 @@
 import type { NextConfig } from "next";
 
-
 const nextConfig: NextConfig = {
-  devIndicators: {
-    position: "bottom-right",
-  },
   webpack: (config) => {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {
